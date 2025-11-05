@@ -238,54 +238,11 @@
 // app.Run($"http://*:{port}");
 
 
-// using Microsoft.AspNetCore.Builder;
-// using Microsoft.Extensions.DependencyInjection;
-// using Microsoft.Extensions.Hosting;
-
-
-// using BlockchainSimulator.Models;
-
-// var builder = WebApplication.CreateBuilder(args);
-
-// // Register Blockchain as a singleton service
-// builder.Services.AddSingleton<Blockchain>(sp =>
-// {
-//     try
-//     {
-//         // Try to load existing blockchain
-//         return Blockchain.LoadOrCreate();
-//     }
-//     catch
-//     {
-//         // If loading fails (e.g., missing or invalid file), create a new blockchain
-//         return new Blockchain();
-//     }
-// });
-
-// builder.Services.AddControllers();
-// builder.Services.AddEndpointsApiExplorer();
-// builder.Services.AddSwaggerGen();
-
-// var app = builder.Build();
-
-// if (app.Environment.IsDevelopment())
-// {
-//     app.UseSwagger();
-//     app.UseSwaggerUI();
-// }
-
-// app.UseHttpsRedirection();
-// app.UseAuthorization();
-// app.MapControllers();
-
-// app.Run();
-
-
-
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
+
+
 using BlockchainSimulator.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -305,39 +262,82 @@ builder.Services.AddSingleton<Blockchain>(sp =>
     }
 });
 
-// Add services
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-
-// Configure Swagger
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo
-    {
-        Title = "Blockchain API",
-        Version = "v1",
-        Description = "API for Blockchain Simulator"
-    });
-});
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Enable Swagger in development
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Blockchain API V1");
-    });
+    app.UseSwaggerUI();
 }
-
-// Serve frontend static files
-app.UseDefaultFiles(); // serve index.html by default
-app.UseStaticFiles();  // serve files from wwwroot
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+
+
+// using Microsoft.AspNetCore.Builder;
+// using Microsoft.Extensions.DependencyInjection;
+// using Microsoft.Extensions.Hosting;
+// using Microsoft.OpenApi.Models;
+// using BlockchainSimulator.Models;
+
+// var builder = WebApplication.CreateBuilder(args);
+
+// // Register Blockchain as a singleton service
+// builder.Services.AddSingleton<Blockchain>(sp =>
+// {
+//     try
+//     {
+//         // Try to load existing blockchain
+//         return Blockchain.LoadOrCreate();
+//     }
+//     catch
+//     {
+//         // If loading fails (e.g., missing or invalid file), create a new blockchain
+//         return new Blockchain();
+//     }
+// });
+
+// // Add services
+// builder.Services.AddControllers();
+// builder.Services.AddEndpointsApiExplorer();
+
+// // Configure Swagger
+// builder.Services.AddSwaggerGen(c =>
+// {
+//     c.SwaggerDoc("v1", new OpenApiInfo
+//     {
+//         Title = "Blockchain API",
+//         Version = "v1",
+//         Description = "API for Blockchain Simulator"
+//     });
+// });
+
+// var app = builder.Build();
+
+// // Enable Swagger in development
+// if (app.Environment.IsDevelopment())
+// {
+//     app.UseSwagger();
+//     app.UseSwaggerUI(c =>
+//     {
+//         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Blockchain API V1");
+//     });
+// }
+
+// // Serve frontend static files
+// app.UseDefaultFiles(); // serve index.html by default
+// app.UseStaticFiles();  // serve files from wwwroot
+
+// app.UseHttpsRedirection();
+// app.UseAuthorization();
+// app.MapControllers();
+
+// app.Run();
