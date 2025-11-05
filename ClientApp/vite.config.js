@@ -1,3 +1,20 @@
+// import { defineConfig } from 'vite';
+// import react from '@vitejs/plugin-react';
+// import path from 'path';
+
+// export default defineConfig({
+//   plugins: [react()],
+//   build: {
+//     outDir: path.resolve(__dirname, '../wwwroot'), // backend wwwroot
+//     emptyOutDir: true,
+//   },
+//   server: {
+//     port: 5173,
+//     strictPort: true,
+//   }
+// });
+
+
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
@@ -5,11 +22,10 @@ import path from 'path';
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: path.resolve(__dirname, '../wwwroot'), // backend wwwroot
+    outDir: path.resolve(__dirname, '../wwwroot'),
     emptyOutDir: true,
   },
   server: {
     port: 5173,
-    strictPort: true,
-  }
+  },
 });

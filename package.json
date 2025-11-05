@@ -7,7 +7,7 @@
     "dev": "cd ClientApp && npm install && npm run dev",
     "build-frontend": "cd ClientApp && npm install && npm run build",
     "heroku-prebuild": "npm install --prefix ClientApp",
-    "heroku-postbuild": "npm run build --prefix ClientApp",
+"heroku-postbuild": "npm run build --prefix ClientApp",
     "start": "dotnet publish/BlockchainSimulator.dll"
   },
   "engines": {
