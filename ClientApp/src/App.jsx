@@ -1,5 +1,5 @@
 import {Routes, Route} from "react-router-dom";
-import Structure from "./Components/Structure.jsx";
+// import Structure from "./Components/Structure.jsx";
 import Test from "./Components/Test.jsx"
 
 function App() {
@@ -8,8 +8,8 @@ function App() {
   return (
     <>
         <Routes>
-            <Route path="/" element={<Structure/>} />
-             <Route path="/Test" element={<Test/>} />
+            {/* <Route path="/" element={<Structure/>} /> */}
+             <Route path="/" element={<Test/>} />
         </Routes>
     </>
   )
