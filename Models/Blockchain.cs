@@ -72,148 +72,6 @@
 // }
 
 
-// using System;
-// using System.Collections.Generic;
-// using System.Linq;
-
-// namespace BlockchainSimulator.Models
-// {
-//     public class Blockchain
-//     {
-//         public List<Block> Chain { get; private set; }
-//         public List<Transaction> PendingTransactions { get; private set; }
-//         private int Difficulty { get; set; }
-//         private decimal MiningReward { get; set; }
-
-//         // Constructor to initialize a new Blockchain (called when no previous blockchain is available)
-//         public Blockchain()
-//         {
-//             Chain = new List<Block>();
-//             PendingTransactions = new List<Transaction>();
-//             Difficulty = 2;  // Difficulty of mining
-//             MiningReward = 10;  // Reward for mining a block
-
-//             // Create the genesis block (the first block)
-//             CreateGenesisBlock();
-//         }
-
-//         // Constructor to initialize blockchain with an existing chain (loaded from storage)
-//         public Blockchain(List<Block> existingChain)
-//         {
-//             Chain = existingChain ?? new List<Block>();  // If null, create an empty chain
-//             PendingTransactions = new List<Transaction>();
-//             Difficulty = 2;  // Difficulty of mining
-//             MiningReward = 10;  // Reward for mining a block
-
-//             // Ensure the blockchain is valid when loaded from storage (optional validation)
-//             if (Chain.Count == 0)
-//             {
-//                 CreateGenesisBlock();  // Create a genesis block if chain is empty
-//             }
-//             else if (!IsChainValid())
-//             {
-//                 throw new InvalidOperationException("The loaded blockchain is invalid.");
-//             }
-//         }
-
-//         // Create the genesis block (first block in the chain)
-//         // private void CreateGenesisBlock()
-//         // {
-//         //     var genesisBlock = new Block(0, DateTime.UtcNow, null, new List<Transaction>(), "0");
-//         //     genesisBlock.MineBlock(Difficulty);
-//         //     Chain.Add(genesisBlock);
-//         // }
-
-//         private void CreateGenesisBlock()
-// {
-//     var genesisBlock = new Block(0, DateTime.UtcNow, new List<Transaction>(), "0");
-//     genesisBlock.MineBlock(Difficulty);
-//     Chain.Add(genesisBlock);
-// }
-
-
-//         // Create a new transaction
-//         public void CreateTransaction(Transaction transaction)
-//         {
-//             PendingTransactions.Add(transaction);
-//         }
-
-//         // Mine the pending transactions
-//         // public void MinePendingTransactions(string minerAddress)
-//         // {
-//         //     var block = new Block(Chain.Count, DateTime.UtcNow, PendingTransactions, minerAddress, Chain.Last().Hash);
-//         //     block.MineBlock(Difficulty);
-
-//         //     Chain.Add(block);
-//         //     PendingTransactions = new List<Transaction> { new Transaction(null, minerAddress, MiningReward) };  // Reward for miner
-//         // }
-
-//         public void MinePendingTransactions(string minerAddress)
-// {
-//     var block = new Block(
-//         Chain.Count,                    // Index
-//         DateTime.UtcNow,                 // Timestamp
-//         PendingTransactions,             // Transactions
-//         minerAddress,                    // Miner address
-//         Chain.Last().Hash                // Previous hash (from the last block)
-//     );
-
-//     block.MineBlock(Difficulty);         // Mine the block with the given difficulty
-
-//     Chain.Add(block);                    // Add the mined block to the blockchain
-//     PendingTransactions = new List<Transaction> { new Transaction(null, minerAddress, MiningReward) };  // Reward the miner
-// }
-
-
-//         // Get the balance of a given address
-//         public decimal GetBalance(string address)
-//         {
-//             decimal balance = 0;
-
-//             foreach (var block in Chain)
-//             {
-//                 foreach (var tx in block.Transactions)
-//                 {
-//                     if (tx.ToAddress == address)
-//                     {
-//                         balance += tx.Amount;
-//                     }
-
-//                     if (tx.FromAddress == address)
-//                     {
-//                         balance -= tx.Amount;
-//                     }
-//                 }
-//             }
-
-//             return balance;
-//         }
-
-//         // Validate the blockchain
-//         public bool IsChainValid()
-//         {
-//             for (int i = 1; i < Chain.Count; i++)
-//             {
-//                 var currentBlock = Chain[i];
-//                 var previousBlock = Chain[i - 1];
-
-//                 if (currentBlock.Hash != currentBlock.CalculateHash())
-//                 {
-//                     return false;  // Invalid block hash
-//                 }
-
-//                 if (currentBlock.PreviousHash != previousBlock.Hash)
-//                 {
-//                     return false;  // Invalid previous hash
-//                 }
-//             }
-
-//             return true;
-//         }
-//     }
-// }
-
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -227,74 +85,87 @@ namespace BlockchainSimulator.Models
         private int Difficulty { get; set; }
         private decimal MiningReward { get; set; }
 
-        // Constructor for a new blockchain
+        // Constructor to initialize a new Blockchain (called when no previous blockchain is available)
         public Blockchain()
         {
             Chain = new List<Block>();
             PendingTransactions = new List<Transaction>();
-            Difficulty = 2;
-            MiningReward = 10;
+            Difficulty = 2;  // Difficulty of mining
+            MiningReward = 10;  // Reward for mining a block
 
+            // Create the genesis block (the first block)
             CreateGenesisBlock();
         }
 
-        // Constructor for loading from existing chain
+        // Constructor to initialize blockchain with an existing chain (loaded from storage)
         public Blockchain(List<Block> existingChain)
         {
-            Chain = existingChain ?? new List<Block>();
+            Chain = existingChain ?? new List<Block>();  // If null, create an empty chain
             PendingTransactions = new List<Transaction>();
-            Difficulty = 2;
-            MiningReward = 10;
+            Difficulty = 2;  // Difficulty of mining
+            MiningReward = 10;  // Reward for mining a block
 
+            // Ensure the blockchain is valid when loaded from storage (optional validation)
             if (Chain.Count == 0)
-                CreateGenesisBlock();
-            else if (!IsChainValid())
-                throw new InvalidOperationException("Loaded blockchain is invalid.");
-        }
-
-        public static Blockchain LoadOrCreate()
-        {
-            var loadedChain = FileStorage.LoadBlockchain();
-            if (loadedChain.Count == 0)
             {
-                var blockchain = new Blockchain();
-                FileStorage.SaveBlockchain(blockchain.Chain);
-                return blockchain;
+                CreateGenesisBlock();  // Create a genesis block if chain is empty
             }
-            return new Blockchain(loadedChain);
+            else if (!IsChainValid())
+            {
+                throw new InvalidOperationException("The loaded blockchain is invalid.");
+            }
         }
 
-        public void CreateGenesisBlock()
-        {
-            var genesisBlock = new Block(0, DateTime.UtcNow, new List<Transaction>(), "0");
-            genesisBlock.MineBlock(Difficulty);
-            Chain.Add(genesisBlock);
-        }
+        // Create the genesis block (first block in the chain)
+        // private void CreateGenesisBlock()
+        // {
+        //     var genesisBlock = new Block(0, DateTime.UtcNow, null, new List<Transaction>(), "0");
+        //     genesisBlock.MineBlock(Difficulty);
+        //     Chain.Add(genesisBlock);
+        // }
 
+        private void CreateGenesisBlock()
+{
+    var genesisBlock = new Block(0, DateTime.UtcNow, new List<Transaction>(), "0");
+    genesisBlock.MineBlock(Difficulty);
+    Chain.Add(genesisBlock);
+}
+
+
+        // Create a new transaction
         public void CreateTransaction(Transaction transaction)
         {
             PendingTransactions.Add(transaction);
         }
 
+        // Mine the pending transactions
+        // public void MinePendingTransactions(string minerAddress)
+        // {
+        //     var block = new Block(Chain.Count, DateTime.UtcNow, PendingTransactions, minerAddress, Chain.Last().Hash);
+        //     block.MineBlock(Difficulty);
+
+        //     Chain.Add(block);
+        //     PendingTransactions = new List<Transaction> { new Transaction(null, minerAddress, MiningReward) };  // Reward for miner
+        // }
+
         public void MinePendingTransactions(string minerAddress)
-        {
-            if (PendingTransactions.Count == 0) return; // Avoid mining empty block
+{
+    var block = new Block(
+        Chain.Count,                    // Index
+        DateTime.UtcNow,                 // Timestamp
+        PendingTransactions,             // Transactions
+        minerAddress,                    // Miner address
+        Chain.Last().Hash                // Previous hash (from the last block)
+    );
 
-            var block = new Block(
-                Chain.Count,
-                DateTime.UtcNow,
-                PendingTransactions,
-                minerAddress,
-                Chain.Last().Hash
-            );
+    block.MineBlock(Difficulty);         // Mine the block with the given difficulty
 
-            block.MineBlock(Difficulty);
-            Chain.Add(block);
+    Chain.Add(block);                    // Add the mined block to the blockchain
+    PendingTransactions = new List<Transaction> { new Transaction(null, minerAddress, MiningReward) };  // Reward the miner
+}
 
-            // Reward miner
-            PendingTransactions = new List<Transaction> { new Transaction(null, minerAddress, MiningReward) };
-        }
 
+        // Get the balance of a given address
         public decimal GetBalance(string address)
         {
             decimal balance = 0;
@@ -303,25 +174,154 @@ namespace BlockchainSimulator.Models
             {
                 foreach (var tx in block.Transactions)
                 {
-                    if (tx.ToAddress == address) balance += tx.Amount;
-                    if (tx.FromAddress == address) balance -= tx.Amount;
+                    if (tx.ToAddress == address)
+                    {
+                        balance += tx.Amount;
+                    }
+
+                    if (tx.FromAddress == address)
+                    {
+                        balance -= tx.Amount;
+                    }
                 }
             }
 
             return balance;
         }
 
+        // Validate the blockchain
         public bool IsChainValid()
         {
             for (int i = 1; i < Chain.Count; i++)
             {
-                var current = Chain[i];
-                var previous = Chain[i - 1];
+                var currentBlock = Chain[i];
+                var previousBlock = Chain[i - 1];
 
-                if (current.Hash != current.CalculateHash()) return false;
-                if (current.PreviousHash != previous.Hash) return false;
+                if (currentBlock.Hash != currentBlock.CalculateHash())
+                {
+                    return false;  // Invalid block hash
+                }
+
+                if (currentBlock.PreviousHash != previousBlock.Hash)
+                {
+                    return false;  // Invalid previous hash
+                }
             }
+
             return true;
         }
     }
 }
+
+
+// using System;
+// using System.Collections.Generic;
+// using System.Linq;
+
+// namespace BlockchainSimulator.Models
+// {
+//     public class Blockchain
+//     {
+//         public List<Block> Chain { get; private set; }
+//         public List<Transaction> PendingTransactions { get; private set; }
+//         private int Difficulty { get; set; }
+//         private decimal MiningReward { get; set; }
+
+//         // Constructor for a new blockchain
+//         public Blockchain()
+//         {
+//             Chain = new List<Block>();
+//             PendingTransactions = new List<Transaction>();
+//             Difficulty = 2;
+//             MiningReward = 10;
+
+//             CreateGenesisBlock();
+//         }
+
+//         // Constructor for loading from existing chain
+//         public Blockchain(List<Block> existingChain)
+//         {
+//             Chain = existingChain ?? new List<Block>();
+//             PendingTransactions = new List<Transaction>();
+//             Difficulty = 2;
+//             MiningReward = 10;
+
+//             if (Chain.Count == 0)
+//                 CreateGenesisBlock();
+//             else if (!IsChainValid())
+//                 throw new InvalidOperationException("Loaded blockchain is invalid.");
+//         }
+
+//         public static Blockchain LoadOrCreate()
+//         {
+//             var loadedChain = FileStorage.LoadBlockchain();
+//             if (loadedChain.Count == 0)
+//             {
+//                 var blockchain = new Blockchain();
+//                 FileStorage.SaveBlockchain(blockchain.Chain);
+//                 return blockchain;
+//             }
+//             return new Blockchain(loadedChain);
+//         }
+
+//         public void CreateGenesisBlock()
+//         {
+//             var genesisBlock = new Block(0, DateTime.UtcNow, new List<Transaction>(), "0");
+//             genesisBlock.MineBlock(Difficulty);
+//             Chain.Add(genesisBlock);
+//         }
+
+//         public void CreateTransaction(Transaction transaction)
+//         {
+//             PendingTransactions.Add(transaction);
+//         }
+
+//         public void MinePendingTransactions(string minerAddress)
+//         {
+//             if (PendingTransactions.Count == 0) return; // Avoid mining empty block
+
+//             var block = new Block(
+//                 Chain.Count,
+//                 DateTime.UtcNow,
+//                 PendingTransactions,
+//                 minerAddress,
+//                 Chain.Last().Hash
+//             );
+
+//             block.MineBlock(Difficulty);
+//             Chain.Add(block);
+
+//             // Reward miner
+//             PendingTransactions = new List<Transaction> { new Transaction(null, minerAddress, MiningReward) };
+//         }
+
+//         public decimal GetBalance(string address)
+//         {
+//             decimal balance = 0;
+
+//             foreach (var block in Chain)
+//             {
+//                 foreach (var tx in block.Transactions)
+//                 {
+//                     if (tx.ToAddress == address) balance += tx.Amount;
+//                     if (tx.FromAddress == address) balance -= tx.Amount;
+//                 }
+//             }
+
+//             return balance;
+//         }
+
+//         public bool IsChainValid()
+//         {
+//             for (int i = 1; i < Chain.Count; i++)
+//             {
+//                 var current = Chain[i];
+//                 var previous = Chain[i - 1];
+
+//                 if (current.Hash != current.CalculateHash()) return false;
+//                 if (current.PreviousHash != previous.Hash) return false;
+//             }
+//             return true;
+//         }
+//     }
+// }

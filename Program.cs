@@ -205,80 +205,80 @@
 // app.Run($"http://0.0.0.0:{port}");
 
 
-// using System;
-// using Microsoft.AspNetCore.Builder;
-// using Microsoft.Extensions.DependencyInjection;
-// using Microsoft.Extensions.Hosting;
-
-// var builder = WebApplication.CreateBuilder(args);
-
-// builder.Services.AddControllers();
-
-// builder.Services.AddCors(options =>
-// {
-//     options.AddPolicy("AllowAll", policy =>
-//     {
-//         policy.AllowAnyOrigin()
-//               .AllowAnyMethod()
-//               .AllowAnyHeader();
-//     });
-// });
-
-// var app = builder.Build();
-
-// app.UseCors("AllowAll");
-
-// app.UseDefaultFiles();
-// app.UseStaticFiles();
-
-// app.MapControllers();
-
-// // ✅ Heroku requires this
-// var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
-// app.Run($"http://*:{port}");
-
-
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-
-using BlockchainSimulator.Models;
-
 var builder = WebApplication.CreateBuilder(args);
 
-// Register Blockchain as a singleton service
-builder.Services.AddSingleton<Blockchain>(sp =>
-{
-    try
-    {
-        // Try to load existing blockchain
-        return Blockchain.LoadOrCreate();
-    }
-    catch
-    {
-        // If loading fails (e.g., missing or invalid file), create a new blockchain
-        return new Blockchain();
-    }
-});
-
 builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseCors("AllowAll");
 
-app.UseHttpsRedirection();
-app.UseAuthorization();
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 app.MapControllers();
 
-app.Run();
+// ✅ Heroku requires this
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+app.Run($"http://*:{port}");
+
+
+// using Microsoft.AspNetCore.Builder;
+// using Microsoft.Extensions.DependencyInjection;
+// using Microsoft.Extensions.Hosting;
+
+
+// using BlockchainSimulator.Models;
+
+// var builder = WebApplication.CreateBuilder(args);
+
+// // Register Blockchain as a singleton service
+// builder.Services.AddSingleton<Blockchain>(sp =>
+// {
+//     try
+//     {
+//         // Try to load existing blockchain
+//         return Blockchain.LoadOrCreate();
+//     }
+//     catch
+//     {
+//         // If loading fails (e.g., missing or invalid file), create a new blockchain
+//         return new Blockchain();
+//     }
+// });
+
+// builder.Services.AddControllers();
+// builder.Services.AddEndpointsApiExplorer();
+// builder.Services.AddSwaggerGen();
+
+// var app = builder.Build();
+
+// if (app.Environment.IsDevelopment())
+// {
+//     app.UseSwagger();
+//     app.UseSwaggerUI();
+// }
+
+// app.UseHttpsRedirection();
+// app.UseAuthorization();
+// app.MapControllers();
+
+// app.Run();
 
 
 
