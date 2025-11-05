@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "WXomVCT3Vm7+S2Q/0a/glflwwwIGsWxq96I9wwPqmJrZGIUKQU7ICGBA6tC6mrQSweklvEXmjQSqY/asv2W6kA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\BROSS\\Desktop\\GENERAL\\projects\\blockChain_test\\blockchaine_simulator\\BlockchainSimulator.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\BROSS\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

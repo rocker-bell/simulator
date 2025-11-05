@@ -1,0 +1,25 @@
+
+
+   Source: C:\Users\BROSS\Desktop\GENERAL\projects\blockChain_test\blockchaine_simulator
+
+Mode            Length Hierarchy                                                                                       
+----            ------ ---------                                                                                       
+d-----        39,02 KB blockchaine_simulator                                                                
+-a----         2,61 KB +-- blockchain_data.json                                                                        
+-a----         1,11 KB +-- blockchaine_simulator.sln                                                                   
+-a----       712,00  B +-- BlockchainSimulator.csproj                                                                  
+-a----       692,00  B +-- curlcmd.txt                                                                                 
+-a----        21,68 KB +-- front-end.docx                                                                              
+-a----        49,00  B +-- global.json                                                                                 
+-a----         1,96 KB +-- Program.cs                                                                                  
+-a----        10,24 KB +-- tree.txt                                                                                    
+d-----         5,21 KB +-- Controllers                                                                      
+-a----         5,21 KB ¦   +-- BlockchainController.cs                                                                 
+d-----        11,17 KB +-- Models                                                                           
+-a----         6,89 KB     +-- Blockchain.cs                                                                           
+-a----         2,94 KB     +-- Blocks.cs                                                                               
+-a----         1,03 KB     +-- FileStorage.cs                                                                          
+-a----       321,00  B     +-- Transaction.cs                                                                          
+
+
+

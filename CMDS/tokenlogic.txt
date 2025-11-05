@@ -1,0 +1,125 @@
+Cool! Let’s build a simple token creation system step-by-step on your blockchain simulator.
+
+---
+
+### Step 1: What do you want tokens to do?
+
+Tokens typically have:
+
+* A **name** (like "MyToken")
+* A **symbol** (like "MTK")
+* A **total supply** (how many exist)
+* Balances for different addresses (who owns how many tokens)
+
+---
+
+### Step 2: Basic design plan
+
+* Add a `Token` class to define tokens.
+* Add a dictionary to `Blockchain` that tracks token balances per address.
+* Create endpoints to:
+
+  * Create new tokens
+  * Transfer tokens between addresses
+  * Get token balances
+
+---
+
+### Step 3: Let’s start with a simple `Token` class.
+
+Try this first (create a new file `Token.cs`):
+
+```csharp
+public class Token
+{
+    public string Name { get; set; }
+    public string Symbol { get; set; }
+    public decimal TotalSupply { get; set; }
+    public Dictionary<string, decimal> Balances { get; set; } = new Dictionary<string, decimal>();
+
+    public Token(string name, string symbol, decimal totalSupply, string ownerAddress)
+    {
+        Name = name;
+        Symbol = symbol;
+        TotalSupply = totalSupply;
+        Balances[ownerAddress] = totalSupply;
+    }
+}
+```
+
+---
+
+### Step 4: Extend your `Blockchain` class
+
+Add a list of tokens:
+
+```csharp
+public List<Token> Tokens { get; set; } = new List<Token>();
+```
+
+And methods to:
+
+* Create a token
+* Transfer tokens
+
+Something like:
+
+```csharp
+public void CreateToken(string name, string symbol, decimal totalSupply, string ownerAddress)
+{
+    var token = new Token(name, symbol, totalSupply, ownerAddress);
+    Tokens.Add(token);
+}
+
+public bool TransferToken(string symbol, string from, string to, decimal amount)
+{
+    var token = Tokens.Find(t => t.Symbol == symbol);
+    if (token == null) return false;
+
+    if (!token.Balances.ContainsKey(from) || token.Balances[from] < amount)
+        return false;
+
+    token.Balances[from] -= amount;
+    if (!token.Balances.ContainsKey(to))
+        token.Balances[to] = 0;
+    token.Balances[to] += amount;
+
+    return true;
+}
+```
+
+---
+
+### Step 5: Add API endpoints
+
+Add new routes to your controller:
+
+```csharp
+[HttpPost("token/create")]
+public IActionResult CreateToken([FromQuery] string name, [FromQuery] string symbol, [FromQuery] decimal totalSupply, [FromQuery] string owner)
+{
+    chain.CreateToken(name, symbol, totalSupply, owner);
+    return Ok($"Token {name} ({symbol}) created with total supply {totalSupply} assigned to {owner}");
+}
+
+[HttpPost("token/transfer")]
+public IActionResult TransferToken([FromQuery] string symbol, [FromQuery] string from, [FromQuery] string to, [FromQuery] decimal amount)
+{
+    bool success = chain.TransferToken(symbol, from, to, amount);
+    if (!success) return BadRequest("Transfer failed: insufficient balance or token not found.");
+    return Ok("Transfer successful.");
+}
+
+[HttpGet("token/balance")]
+public IActionResult GetTokenBalance([FromQuery] string symbol, [FromQuery] string address)
+{
+    var token = chain.Tokens.Find(t => t.Symbol == symbol);
+    if (token == null) return NotFound("Token not found.");
+    token.Balances.TryGetValue(address, out var balance);
+    return Ok(new { Address = address, Token = symbol, Balance = balance });
+}
+```
+
+---
+
+### How does that sound? Want to start implementing these steps together? Or should I help you with the exact code changes?
