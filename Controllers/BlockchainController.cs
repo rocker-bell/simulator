@@ -241,6 +241,55 @@
 // }
 
 
+// using Microsoft.AspNetCore.Mvc;
+// using BlockchainSimulator.Models;
+
+// [ApiController]
+// [Route("api/[controller]")]
+// public class BlockchainController : ControllerBase
+// {
+//     private static Blockchain chain = Blockchain.LoadOrCreate();
+
+//     [HttpPost("transaction")]
+//     public IActionResult CreateTransaction([FromBody] Transaction tx)
+//     {
+//         chain.CreateTransaction(tx);
+//         FileStorage.SaveBlockchain(chain.Chain);
+//         return Ok("Transaction added.");
+//     }
+
+//     [HttpPost("mine")]
+//     public IActionResult Mine([FromQuery] string minerAddress)
+//     {
+//         chain.MinePendingTransactions(minerAddress);
+//         FileStorage.SaveBlockchain(chain.Chain);
+//         return Ok("Block mined.");
+//     }
+
+//     [HttpGet("chain")]
+//     public IActionResult GetChain() => Ok(chain.Chain);
+
+//     [HttpGet("balance/{address}")]
+//     public IActionResult GetBalance(string address)
+//     {
+//         var balance = chain.GetBalance(address);
+//         return Ok(new { Address = address, Balance = balance });
+//     }
+
+//     [HttpPost("setbalance")]
+//     public IActionResult SetBalance([FromQuery] string address, [FromQuery] decimal amount)
+//     {
+//         var tx = new Transaction(null, address, amount);
+//         chain.CreateTransaction(tx);
+//         FileStorage.SaveBlockchain(chain.Chain);
+//         return Ok($"Added {amount} to {address}");
+//     }
+
+//     [HttpGet("validate")]
+//     public IActionResult ValidateChain() => Ok(chain.IsChainValid());
+// }
+
+
 using Microsoft.AspNetCore.Mvc;
 using BlockchainSimulator.Models;
 
@@ -248,31 +297,37 @@ using BlockchainSimulator.Models;
 [Route("api/[controller]")]
 public class BlockchainController : ControllerBase
 {
-    private static Blockchain chain = Blockchain.LoadOrCreate();
+    private readonly Blockchain _chain;
+
+    // Use constructor injection
+    public BlockchainController(Blockchain chain)
+    {
+        _chain = chain;
+    }
 
     [HttpPost("transaction")]
     public IActionResult CreateTransaction([FromBody] Transaction tx)
     {
-        chain.CreateTransaction(tx);
-        FileStorage.SaveBlockchain(chain.Chain);
+        _chain.CreateTransaction(tx);
+        FileStorage.SaveBlockchain(_chain.Chain);
         return Ok("Transaction added.");
     }
 
     [HttpPost("mine")]
     public IActionResult Mine([FromQuery] string minerAddress)
     {
-        chain.MinePendingTransactions(minerAddress);
-        FileStorage.SaveBlockchain(chain.Chain);
+        _chain.MinePendingTransactions(minerAddress);
+        FileStorage.SaveBlockchain(_chain.Chain);
         return Ok("Block mined.");
     }
 
     [HttpGet("chain")]
-    public IActionResult GetChain() => Ok(chain.Chain);
+    public IActionResult GetChain() => Ok(_chain.Chain);
 
     [HttpGet("balance/{address}")]
     public IActionResult GetBalance(string address)
     {
-        var balance = chain.GetBalance(address);
+        var balance = _chain.GetBalance(address);
         return Ok(new { Address = address, Balance = balance });
     }
 
@@ -280,11 +335,11 @@ public class BlockchainController : ControllerBase
     public IActionResult SetBalance([FromQuery] string address, [FromQuery] decimal amount)
     {
         var tx = new Transaction(null, address, amount);
-        chain.CreateTransaction(tx);
-        FileStorage.SaveBlockchain(chain.Chain);
+        _chain.CreateTransaction(tx);
+        FileStorage.SaveBlockchain(_chain.Chain);
         return Ok($"Added {amount} to {address}");
     }
 
     [HttpGet("validate")]
-    public IActionResult ValidateChain() => Ok(chain.IsChainValid());
+    public IActionResult ValidateChain() => Ok(_chain.IsChainValid());
 }
