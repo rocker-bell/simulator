@@ -4,64 +4,194 @@
 
 Mode            Length Hierarchy                                                                                       
 ----            ------ ---------                                                                                       
-d-----        26,65 KB blockChain_test                                                                      
+d-----        16,64 KB blockChain_test                                                                      
+-a----        49,00  B +-- .gitignore                                                                                  
+-a----       712,00  B +-- BlockchainSimulator.csproj                                                                  
 -a----         6,87 KB +-- file_tree.txt                                                                               
--a----        19,75 KB +-- general_file_tree.txt                                                                       
--a----        37,00  B +-- Procfile                                                                                    
+-a----         7,02 KB +-- general_file_tree.txt                                                                       
+-a----        47,00  B +-- Procfile                                                                                    
+-a----         1,96 KB +-- Program.cs                                                                                  
 da----         5,26 KB +-- basics                                                                           
--a----         3,04 KB ï¿½   +-- Quickoverview.txt                                                                       
--a----         2,22 KB ï¿½   +-- test.csx                                                                                
+-a----         3,04 KB ¦   +-- Quickoverview.txt                                                                       
+-a----         2,22 KB ¦   +-- test.csx                                                                                
 d-----        41,80 KB +-- blockchaine_simulator                                                            
--a----         2,99 KB ï¿½   +-- blockchain_data.json                                                                    
--a----         1,11 KB ï¿½   +-- blockchaine_simulator.sln                                                               
--a----       712,00  B ï¿½   +-- BlockchainSimulator.csproj                                                              
--a----       909,00  B ï¿½   +-- curlcmd.txt                                                                             
--a----         2,19 KB ï¿½   +-- file_tree.txt                                                                           
--a----        21,68 KB ï¿½   +-- front-end.docx                                                                          
--a----        49,00  B ï¿½   +-- global.json                                                                             
--a----         1,96 KB ï¿½   +-- Program.cs                                                                              
--a----        10,24 KB ï¿½   +-- tree.txt                                                                                
-d-----         0,00  B ï¿½   +-- bin                                                                          
-d-----         0,00  B ï¿½   ï¿½   +-- Debug                                                                    
-d-----         5,21 KB ï¿½   +-- Controllers                                                                  
--a----         5,21 KB ï¿½   ï¿½   +-- BlockchainController.cs                                                             
-d-----        11,17 KB ï¿½   +-- Models                                                                       
--a----         6,89 KB ï¿½   ï¿½   +-- Blockchain.cs                                                                       
--a----         2,94 KB ï¿½   ï¿½   +-- Blocks.cs                                                                           
--a----         1,03 KB ï¿½   ï¿½   +-- FileStorage.cs                                                                      
--a----       321,00  B ï¿½   ï¿½   +-- Transaction.cs                                                                      
-d-----         7,51 KB ï¿½   +-- obj                                                                          
--a----         2,29 KB ï¿½       +-- BlockchainSimulator.csproj.nuget.dgspec.json                                        
--a----         1,11 KB ï¿½       +-- BlockchainSimulator.csproj.nuget.g.props                                            
--a----       150,00  B ï¿½       +-- BlockchainSimulator.csproj.nuget.g.targets                                          
--a----         3,52 KB ï¿½       +-- project.assets.json                                                                 
--a----       441,00  B ï¿½       +-- project.nuget.cache                                                                 
--a----        25,00  B ï¿½       +-- staticwebassets.pack.sentinel                                                       
-d-----         0,00  B ï¿½       +-- Debug                                                                    
+-a----         2,99 KB ¦   +-- blockchain_data.json                                                                    
+-a----         1,11 KB ¦   +-- blockchaine_simulator.sln                                                               
+-a----       712,00  B ¦   +-- BlockchainSimulator.csproj                                                              
+-a----       909,00  B ¦   +-- curlcmd.txt                                                                             
+-a----         2,19 KB ¦   +-- file_tree.txt                                                                           
+-a----        21,68 KB ¦   +-- front-end.docx                                                                          
+-a----        49,00  B ¦   +-- global.json                                                                             
+-a----         1,96 KB ¦   +-- Program.cs                                                                              
+-a----        10,24 KB ¦   +-- tree.txt                                                                                
+d-----         0,00  B ¦   +-- bin                                                                          
+d-----         0,00  B ¦   ¦   +-- Debug                                                                    
+d-----         5,21 KB ¦   +-- Controllers                                                                  
+-a----         5,21 KB ¦   ¦   +-- BlockchainController.cs                                                             
+d-----        11,17 KB ¦   +-- Models                                                                       
+-a----         6,89 KB ¦   ¦   +-- Blockchain.cs                                                                       
+-a----         2,94 KB ¦   ¦   +-- Blocks.cs                                                                           
+-a----         1,03 KB ¦   ¦   +-- FileStorage.cs                                                                      
+-a----       321,00  B ¦   ¦   +-- Transaction.cs                                                                      
+d-----         7,51 KB ¦   +-- obj                                                                          
+-a----         2,29 KB ¦       +-- BlockchainSimulator.csproj.nuget.dgspec.json                                        
+-a----         1,11 KB ¦       +-- BlockchainSimulator.csproj.nuget.g.props                                            
+-a----       150,00  B ¦       +-- BlockchainSimulator.csproj.nuget.g.targets                                          
+-a----         3,52 KB ¦       +-- project.assets.json                                                                 
+-a----       441,00  B ¦       +-- project.nuget.cache                                                                 
+-a----        25,00  B ¦       +-- staticwebassets.pack.sentinel                                                       
+d-----         0,00  B ¦       +-- Debug                                                                    
 d-----        28,79 KB +-- CMDS                                                                             
--a----         0,00  B ï¿½   +-- commands                                                                                
--a----         6,27 KB ï¿½   +-- deploy                                                                                  
--a----        12,72 KB ï¿½   +-- rpc.txt                                                                                 
--a----         6,41 KB ï¿½   +-- storage_solution1.txt                                                                   
--a----         3,39 KB ï¿½   +-- tokenlogic.txt                                                                          
+-a----         0,00  B ¦   +-- commands                                                                                
+-a----         6,27 KB ¦   +-- deploy                                                                                  
+-a----        12,72 KB ¦   +-- rpc.txt                                                                                 
+-a----         6,41 KB ¦   +-- storage_solution1.txt                                                                   
+-a----         3,39 KB ¦   +-- tokenlogic.txt                                                                          
+d-----         5,21 KB +-- Controllers                                                                      
+-a----         5,21 KB ¦   +-- BlockchainController.cs                                                                 
 d-----        99,64 KB +-- front-end                                                                        
--a----       253,00  B     +-- .gitignore                                                                              
--a----       763,00  B     +-- eslint.config.js                                                             
--a----       358,00  B     +-- index.html                                                                              
--a----       640,00  B     +-- package.json                                                                            
--a----        96,19 KB     +-- package-lock.json                                                                       
--a----         1,13 KB     +-- README.md                                                                               
--a----       364,00  B     +-- vite.config.js                                                               
-d-----        74,16 KB                                                             
-d-----         1,46 KB     +-- public                                                                       
--a----         1,46 KB     ï¿½   +-- vite.svg                                                                            
-d-----         1,80 KB     +-- src                                                                          
--a----       356,00  B         +-- App.jsx                                                                             
--a----         1,13 KB         +-- index.css                                                                           
--a----       326,00  B         +-- main.jsx                                                                            
-d-----         0,00  B         +-- assets                                                                   
-d-----         0,00  B         +-- Components                                                               
-d-----         0,00  B         +-- Styles                                                                   
+-a----       253,00  B ¦   +-- .gitignore                                                                              
+-a----       763,00  B ¦   +-- eslint.config.js                                                             
+-a----       358,00  B ¦   +-- index.html                                                                              
+-a----       640,00  B ¦   +-- package.json                                                                            
+-a----        96,19 KB ¦   +-- package-lock.json                                                                       
+-a----         1,13 KB ¦   +-- README.md                                                                               
+-a----       364,00  B ¦   +-- vite.config.js                                                               
+d-----        74,16 KB ¦   +-- node_modules                                                                 
+-a----        74,16 KB ¦   ¦   +-- .package-lock.json                                                                  
+d-----         0,00  B ¦   ¦   +-- .bin                                                                     
+d-----         0,00  B ¦   ¦   +-- .vite                                                                    
+d-----         0,00  B ¦   ¦   +-- .vite-temp                                                               
+d-----         0,00  B ¦   ¦   +-- @babel                                                                   
+d-----         0,00  B ¦   ¦   +-- @esbuild                                                                 
+d-----         0,00  B ¦   ¦   +-- @eslint                                                                  
+d-----         0,00  B ¦   ¦   +-- @eslint-community                                                        
+d-----         0,00  B ¦   ¦   +-- @humanfs                                                                 
+d-----         0,00  B ¦   ¦   +-- @humanwhocodes                                                           
+d-----         0,00  B ¦   ¦   +-- @jridgewell                                                              
+d-----         0,00  B ¦   ¦   +-- @rolldown                                                                
+d-----         0,00  B ¦   ¦   +-- @rollup                                                                  
+d-----         0,00  B ¦   ¦   +-- @types                                                                   
+d-----         0,00  B ¦   ¦   +-- @vitejs                                                                  
+d-----         0,00  B ¦   ¦   +-- acorn                                                                    
+d-----         0,00  B ¦   ¦   +-- acorn-jsx                                                                
+d-----         0,00  B ¦   ¦   +-- ajv                                                                      
+d-----         0,00  B ¦   ¦   +-- ansi-styles                                                              
+d-----         0,00  B ¦   ¦   +-- argparse                                                                 
+d-----         0,00  B ¦   ¦   +-- balanced-match                                                           
+d-----         0,00  B ¦   ¦   +-- baseline-browser-mapping                                                 
+d-----         0,00  B ¦   ¦   +-- brace-expansion                                                          
+d-----         0,00  B ¦   ¦   +-- browserslist                                                             
+d-----         0,00  B ¦   ¦   +-- callsites                                                                
+d-----         0,00  B ¦   ¦   +-- caniuse-lite                                                             
+d-----         0,00  B ¦   ¦   +-- chalk                                                                    
+d-----         0,00  B ¦   ¦   +-- color-convert                                                            
+d-----         0,00  B ¦   ¦   +-- color-name                                                               
+d-----         0,00  B ¦   ¦   +-- concat-map                                                               
+d-----         0,00  B ¦   ¦   +-- convert-source-map                                                       
+d-----         0,00  B ¦   ¦   +-- cookie                                                                   
+d-----         0,00  B ¦   ¦   +-- cross-spawn                                                              
+d-----         0,00  B ¦   ¦   +-- csstype                                                                  
+d-----         0,00  B ¦   ¦   +-- debug                                                                    
+d-----         0,00  B ¦   ¦   +-- deep-is                                                                  
+d-----         0,00  B ¦   ¦   +-- electron-to-chromium                                                     
+d-----         0,00  B ¦   ¦   +-- esbuild                                                                  
+d-----         0,00  B ¦   ¦   +-- escalade                                                                 
+d-----         0,00  B ¦   ¦   +-- escape-string-regexp                                                     
+d-----         0,00  B ¦   ¦   +-- eslint                                                                   
+d-----         0,00  B ¦   ¦   +-- eslint-plugin-react-hooks                                                
+d-----         0,00  B ¦   ¦   +-- eslint-plugin-react-refresh                                              
+d-----         0,00  B ¦   ¦   +-- eslint-scope                                                             
+d-----         0,00  B ¦   ¦   +-- eslint-visitor-keys                                                      
+d-----         0,00  B ¦   ¦   +-- espree                                                                   
+d-----         0,00  B ¦   ¦   +-- esquery                                                                  
+d-----         0,00  B ¦   ¦   +-- esrecurse                                                                
+d-----         0,00  B ¦   ¦   +-- estraverse                                                               
+d-----         0,00  B ¦   ¦   +-- esutils                                                                  
+d-----         0,00  B ¦   ¦   +-- fast-deep-equal                                                          
+d-----         0,00  B ¦   ¦   +-- fast-json-stable-stringify                                               
+d-----         0,00  B ¦   ¦   +-- fast-levenshtein                                                         
+d-----         0,00  B ¦   ¦   +-- fdir                                                                     
+d-----         0,00  B ¦   ¦   +-- file-entry-cache                                                         
+d-----         0,00  B ¦   ¦   +-- find-up                                                                  
+d-----         0,00  B ¦   ¦   +-- flat-cache                                                               
+d-----         0,00  B ¦   ¦   +-- flatted                                                                  
+d-----         0,00  B ¦   ¦   +-- gensync                                                                  
+d-----         0,00  B ¦   ¦   +-- globals                                                                  
+d-----         0,00  B ¦   ¦   +-- glob-parent                                                              
+d-----         0,00  B ¦   ¦   +-- has-flag                                                                 
+d-----         0,00  B ¦   ¦   +-- ignore                                                                   
+d-----         0,00  B ¦   ¦   +-- import-fresh                                                             
+d-----         0,00  B ¦   ¦   +-- imurmurhash                                                              
+d-----         0,00  B ¦   ¦   +-- isexe                                                                    
+d-----         0,00  B ¦   ¦   +-- is-extglob                                                               
+d-----         0,00  B ¦   ¦   +-- is-glob                                                                  
+d-----         0,00  B ¦   ¦   +-- jsesc                                                                    
+d-----         0,00  B ¦   ¦   +-- json5                                                                    
+d-----         0,00  B ¦   ¦   +-- json-buffer                                                              
+d-----         0,00  B ¦   ¦   +-- json-schema-traverse                                                     
+d-----         0,00  B ¦   ¦   +-- json-stable-stringify-without-jsonify                                    
+d-----         0,00  B ¦   ¦   +-- js-tokens                                                                
+d-----         0,00  B ¦   ¦   +-- js-yaml                                                                  
+d-----         0,00  B ¦   ¦   +-- keyv                                                                     
+d-----         0,00  B ¦   ¦   +-- levn                                                                     
+d-----         0,00  B ¦   ¦   +-- locate-path                                                              
+d-----         0,00  B ¦   ¦   +-- lodash.merge                                                             
+d-----         0,00  B ¦   ¦   +-- lru-cache                                                                
+d-----         0,00  B ¦   ¦   +-- minimatch                                                                
+d-----         0,00  B ¦   ¦   +-- ms                                                                       
+d-----         0,00  B ¦   ¦   +-- nanoid                                                                   
+d-----         0,00  B ¦   ¦   +-- natural-compare                                                          
+d-----         0,00  B ¦   ¦   +-- node-releases                                                            
+d-----         0,00  B ¦   ¦   +-- optionator                                                               
+d-----         0,00  B ¦   ¦   +-- parent-module                                                            
+d-----         0,00  B ¦   ¦   +-- path-exists                                                              
+d-----         0,00  B ¦   ¦   +-- path-key                                                                 
+d-----         0,00  B ¦   ¦   +-- picocolors                                                               
+d-----         0,00  B ¦   ¦   +-- picomatch                                                                
+d-----         0,00  B ¦   ¦   +-- p-limit                                                                  
+d-----         0,00  B ¦   ¦   +-- p-locate                                                                 
+d-----         0,00  B ¦   ¦   +-- postcss                                                                  
+d-----         0,00  B ¦   ¦   +-- prelude-ls                                                               
+d-----         0,00  B ¦   ¦   +-- punycode                                                                 
+d-----         0,00  B ¦   ¦   +-- react                                                                    
+d-----         0,00  B ¦   ¦   +-- react-dom                                                                
+d-----         0,00  B ¦   ¦   +-- react-refresh                                                            
+d-----         0,00  B ¦   ¦   +-- react-router                                                             
+d-----         0,00  B ¦   ¦   +-- react-router-dom                                                         
+d-----         0,00  B ¦   ¦   +-- resolve-from                                                             
+d-----         0,00  B ¦   ¦   +-- rollup                                                                   
+d-----         0,00  B ¦   ¦   +-- scheduler                                                                
+d-----         0,00  B ¦   ¦   +-- semver                                                                   
+d-----         0,00  B ¦   ¦   +-- set-cookie-parser                                                        
+d-----         0,00  B ¦   ¦   +-- shebang-command                                                          
+d-----         0,00  B ¦   ¦   +-- shebang-regex                                                            
+d-----         0,00  B ¦   ¦   +-- source-map-js                                                            
+d-----         0,00  B ¦   ¦   +-- strip-json-comments                                                      
+d-----         0,00  B ¦   ¦   +-- supports-color                                                           
+d-----         0,00  B ¦   ¦   +-- tinyglobby                                                               
+d-----         0,00  B ¦   ¦   +-- type-check                                                               
+d-----         0,00  B ¦   ¦   +-- update-browserslist-db                                                   
+d-----         0,00  B ¦   ¦   +-- uri-js                                                                   
+d-----         0,00  B ¦   ¦   +-- vite                                                                     
+d-----         0,00  B ¦   ¦   +-- which                                                                    
+d-----         0,00  B ¦   ¦   +-- word-wrap                                                                
+d-----         0,00  B ¦   ¦   +-- yallist                                                                  
+d-----         0,00  B ¦   ¦   +-- yocto-queue                                                              
+d-----         1,46 KB ¦   +-- public                                                                       
+-a----         1,46 KB ¦   ¦   +-- vite.svg                                                                            
+d-----         1,80 KB ¦   +-- src                                                                          
+-a----       356,00  B ¦       +-- App.jsx                                                                             
+-a----         1,13 KB ¦       +-- index.css                                                                           
+-a----       326,00  B ¦       +-- main.jsx                                                                            
+d-----         0,00  B ¦       +-- assets                                                                   
+d-----         0,00  B ¦       +-- Components                                                               
+d-----         0,00  B ¦       +-- Styles                                                                   
+d-----        11,17 KB +-- Models                                                                           
+-a----         6,89 KB     +-- Blockchain.cs                                                                           
+-a----         2,94 KB     +-- Blocks.cs                                                                               
+-a----         1,03 KB     +-- FileStorage.cs                                                                          
+-a----       321,00  B     +-- Transaction.cs                                                                          
 
 
 

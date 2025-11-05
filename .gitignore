@@ -5,3 +5,5 @@ obj/
 *.swp
 *.docx
 *.txt
+node_modules/
+front-end/node_modules/
