@@ -1,3 +1,1 @@
-web: dotnet blockchaine_simulator.dll
-
-
+web: dotnet BlockchainSimulator.dll

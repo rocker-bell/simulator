@@ -1,66 +1,25 @@
 
 
-   Source: C:\Users\BROSS\Desktop\GENERAL\projects\blockChain_test
+   Source: C:\Users\BROSS\Desktop\GENERAL\projects\blockChain_test\blockchaine_simulator
 
 Mode            Length Hierarchy                                                                                       
 ----            ------ ---------                                                                                       
-d-----        37,00  B blockChain_test                                                                      
--a----        37,00  B +-- Procfile                                                                                    
-da----         5,03 KB +-- basics                                                                           
--a----         3,04 KB ï¿½   +-- Quickoverview.txt                                                                       
--a----         1,99 KB ï¿½   +-- test.csx                                                                                
-d-----        41,21 KB +-- blockchaine_simulator                                                            
--a----         2,61 KB ï¿½   +-- blockchain_data.json                                                                    
--a----         1,11 KB ï¿½   +-- blockchaine_simulator.sln                                                               
--a----       712,00  B ï¿½   +-- BlockchainSimulator.csproj                                                              
--a----       692,00  B ï¿½   +-- curlcmd.txt                                                                             
--a----         2,19 KB ï¿½   +-- file_tree.txt                                                                           
--a----        21,68 KB ï¿½   +-- front-end.docx                                                                          
--a----        49,00  B ï¿½   +-- global.json                                                                             
--a----         1,96 KB ï¿½   +-- Program.cs                                                                              
--a----        10,24 KB ï¿½   +-- tree.txt                                                                                
-d-----         0,00  B ï¿½   +-- bin                                                                          
-d-----         0,00  B ï¿½   ï¿½   +-- Debug                                                                    
-d-----         5,21 KB ï¿½   +-- Controllers                                                                  
--a----         5,21 KB ï¿½   ï¿½   +-- BlockchainController.cs                                                             
-d-----        11,17 KB ï¿½   +-- Models                                                                       
--a----         6,89 KB ï¿½   ï¿½   +-- Blockchain.cs                                                                       
--a----         2,94 KB ï¿½   ï¿½   +-- Blocks.cs                                                                           
--a----         1,03 KB ï¿½   ï¿½   +-- FileStorage.cs                                                                      
--a----       321,00  B ï¿½   ï¿½   +-- Transaction.cs                                                                      
-d-----         7,50 KB ï¿½   +-- obj                                                                          
--a----         2,29 KB ï¿½       +-- BlockchainSimulator.csproj.nuget.dgspec.json                                        
--a----         1,11 KB ï¿½       +-- BlockchainSimulator.csproj.nuget.g.props                                            
--a----       150,00  B ï¿½       +-- BlockchainSimulator.csproj.nuget.g.targets                                          
--a----         3,52 KB ï¿½       +-- project.assets.json                                                                 
--a----       441,00  B ï¿½       +-- project.nuget.cache                                                                 
--a----        15,00  B ï¿½       +-- staticwebassets.pack.sentinel                                                       
-d-----         0,00  B ï¿½       +-- Debug                                                                    
-d-----        28,79 KB +-- CMDS                                                                             
--a----         0,00  B ï¿½   +-- commands                                                                                
--a----         6,27 KB ï¿½   +-- deploy                                                                                  
--a----        12,72 KB ï¿½   +-- rpc.txt                                                                                 
--a----         6,41 KB ï¿½   +-- storage_solution1.txt                                                                   
--a----         3,39 KB ï¿½   +-- tokenlogic.txt                                                                          
-d-----        99,64 KB +-- front-end                                                                        
--a----       253,00  B     +-- .gitignore                                                                              
--a----       763,00  B     +-- eslint.config.js                                                             
--a----       358,00  B     +-- index.html                                                                              
--a----       640,00  B     +-- package.json                                                                            
--a----        96,19 KB     +-- package-lock.json                                                                       
--a----         1,13 KB     +-- README.md                                                                               
--a----       364,00  B     +-- vite.config.js                                                               
-d-----        74,16 KB     +-- node_modules                                                                 
-                                                             
-d-----         1,46 KB     +-- public                                                                       
--a----         1,46 KB     ï¿½   +-- vite.svg                                                                            
-d-----         1,80 KB     +-- src                                                                          
--a----       356,00  B         +-- App.jsx                                                                             
--a----         1,13 KB         +-- index.css                                                                           
--a----       326,00  B         +-- main.jsx                                                                            
-d-----         0,00  B         +-- assets                                                                   
-d-----         0,00  B         +-- Components                                                               
-d-----         0,00  B         +-- Styles                                                                   
+d-----        39,02 KB blockchaine_simulator                                                                
+-a----         2,61 KB +-- blockchain_data.json                                                                        
+-a----         1,11 KB +-- blockchaine_simulator.sln                                                                   
+-a----       712,00  B +-- BlockchainSimulator.csproj                                                                  
+-a----       692,00  B +-- curlcmd.txt                                                                                 
+-a----        21,68 KB +-- front-end.docx                                                                              
+-a----        49,00  B +-- global.json                                                                                 
+-a----         1,96 KB +-- Program.cs                                                                                  
+-a----        10,24 KB +-- tree.txt                                                                                    
+d-----         5,21 KB +-- Controllers                                                                      
+-a----         5,21 KB ¦   +-- BlockchainController.cs                                                                 
+d-----        11,17 KB +-- Models                                                                           
+-a----         6,89 KB     +-- Blockchain.cs                                                                           
+-a----         2,94 KB     +-- Blocks.cs                                                                               
+-a----         1,03 KB     +-- FileStorage.cs                                                                          
+-a----       321,00  B     +-- Transaction.cs                                                                          
 
 
 

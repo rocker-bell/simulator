@@ -87,16 +87,68 @@
 // app.Run();
 
 
+// using Microsoft.AspNetCore.Builder;
+// using Microsoft.Extensions.DependencyInjection;
+// using Microsoft.Extensions.Hosting;
+// using Microsoft.Extensions.FileProviders;
+// using System.IO;
+
+// var builder = WebApplication.CreateBuilder(args);
+
+// // Register MVC controllers
+// builder.Services.AddControllers();
+
+// // Add CORS policy
+// builder.Services.AddCors(options =>
+// {
+//     options.AddPolicy("AllowAll", policy =>
+//     {
+//         policy.AllowAnyOrigin()
+//               .AllowAnyMethod()
+//               .AllowAnyHeader();
+//     });
+// });
+
+// var app = builder.Build();
+
+// // Use CORS before routing
+// app.UseCors("AllowAll");
+
+// // Map API controllers
+// app.MapControllers();
+
+// // Serve React/Vite frontend
+// // Assumes the frontend build output is in "front-end/dist"
+// var frontendPath = Path.Combine(Directory.GetCurrentDirectory(), "front-end", "dist");
+// if (Directory.Exists(frontendPath))
+// {
+//     app.UseDefaultFiles(new DefaultFilesOptions
+//     {
+//         FileProvider = new PhysicalFileProvider(frontendPath),
+//         DefaultFileNames = new List<string> { "index.html" }
+//     });
+
+//     app.UseStaticFiles(new StaticFileOptions
+//     {
+//         FileProvider = new PhysicalFileProvider(frontendPath),
+//         RequestPath = ""
+//     });
+
+//     // Fallback for client-side routing
+//     app.MapFallbackToFile("index.html");
+// }
+
+// app.Run();
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Register MVC controllers
 builder.Services.AddControllers();
 
-// Add CORS policy
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -109,17 +161,12 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Use CORS before routing
 app.UseCors("AllowAll");
 
 // Serve frontend static files
-app.UseDefaultFiles(); // look for index.html
+app.UseDefaultFiles();
 app.UseStaticFiles();
 
-// Map API controllers
 app.MapControllers();
-
-// For any other route, serve index.html (SPA fallback)
-app.MapFallbackToFile("index.html");
 
 app.Run();

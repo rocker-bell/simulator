@@ -5,10 +5,11 @@ import path from 'path';
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: path.resolve(__dirname, '../blockchaine_simulator/wwwroot'),
+    outDir: path.resolve(__dirname, '../wwwroot'), // backend wwwroot
     emptyOutDir: true,
   },
   server: {
-    port: 5173
+    port: 5173,
+    strictPort: true,
   }
 });

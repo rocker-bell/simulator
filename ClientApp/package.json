@@ -9,9 +9,10 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm install",
-  "deploy": "npm run build"
+    "deploy": "npm run build"
   },
   "dependencies": {
+    "front-end": "file:..",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.4"
