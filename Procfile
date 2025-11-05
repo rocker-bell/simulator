@@ -1,1 +1,1 @@
-web: dotnet BlockchainSimulator.dll
+web: dotnet publish/BlockchainSimulator.dll

@@ -1,27 +1,19 @@
 {
-  "name": "front-end",
+  "name": "blockchain-simulator",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
- "scripts": {
-  "dev": "cd ClientApp && npm install && npm run dev",
-  "build-frontend": "cd ClientApp && npm install && npm run build",
-  "start": "npm run build-frontend && dotnet run --project BlockchainSimulator.csproj",
-  "heroku-postbuild": "npm install --prefix ClientApp && npm run build --prefix ClientApp"
-},
-   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rocker-bell/simulator"
+  "scripts": {
+    "dev": "cd ClientApp && npm install && npm run dev",
+    "build-frontend": "cd ClientApp && npm install && npm run build",
+    "heroku-prebuild": "npm install --prefix ClientApp",
+    "heroku-postbuild": "npm run build --prefix ClientApp",
+    "start": "dotnet publish/BlockchainSimulator.dll"
   },
-   "engines": {
+  "engines": {
     "node": "22.x",
     "npm": "10.x"
   },
-  "bugs": {
-    "url": "https://github.com/rocker-bell/simulator/issues"
-  },
-  "homepage": "https://github.com/rocker-bell/simulator#readme",
- 
   "dependencies": {
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
