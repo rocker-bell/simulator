@@ -29,8 +29,40 @@
 
 
 
+// using Newtonsoft.Json;
+// using System;
+// using System.Collections.Generic;
+// using System.IO;
+
+// namespace BlockchainSimulator.Models
+// {
+//     public static class FileStorage
+//     {
+//         // Use AppContext.BaseDirectory so the path works on Heroku and Windows/Linux
+//         private static readonly string filePath = Path.Combine(AppContext.BaseDirectory, "blockchain_data.json");
+
+//         public static void SaveBlockchain(List<Block> blockchain)
+//         {
+//             var jsonData = JsonConvert.SerializeObject(blockchain, Formatting.Indented);
+//             File.WriteAllText(filePath, jsonData);
+//         }
+
+//         public static List<Block> LoadBlockchain()
+//         {
+//             if (!File.Exists(filePath))
+//             {
+//                 // Optional: create empty chain or genesis block
+//                 return new List<Block>();
+//             }
+
+//             var jsonData = File.ReadAllText(filePath);
+//             return JsonConvert.DeserializeObject<List<Block>>(jsonData) ?? new List<Block>();
+//         }
+//     }
+// }
+
+
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -38,8 +70,7 @@ namespace BlockchainSimulator.Models
 {
     public static class FileStorage
     {
-        // Use AppContext.BaseDirectory so the path works on Heroku and Windows/Linux
-        private static readonly string filePath = Path.Combine(AppContext.BaseDirectory, "blockchain_data.json");
+        private static string filePath = "blockchain_data.json";
 
         public static void SaveBlockchain(List<Block> blockchain)
         {
@@ -49,12 +80,7 @@ namespace BlockchainSimulator.Models
 
         public static List<Block> LoadBlockchain()
         {
-            if (!File.Exists(filePath))
-            {
-                // Optional: create empty chain or genesis block
-                return new List<Block>();
-            }
-
+            if (!File.Exists(filePath)) return new List<Block>();
             var jsonData = File.ReadAllText(filePath);
             return JsonConvert.DeserializeObject<List<Block>>(jsonData) ?? new List<Block>();
         }
