@@ -91,15 +91,67 @@
 // };
 
 
+// const API_URL = window.location.origin; // same host as frontend
+
+// export const BlockchainService = {
+//   getBlockchain: async () => {
+//     const response = await fetch(`${API_URL}/api/blockchain/chain`);
+//     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+//     return response.json();
+//   },
+
+//   createTransaction: async (tx) => {
+//     const response = await fetch(`${API_URL}/api/blockchain/transaction`, {
+//       method: 'POST',
+//       headers: { 'Content-Type': 'application/json' },
+//       body: JSON.stringify(tx),
+//     });
+//     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+//     return response.text();
+//   },
+
+//   mineBlock: async (minerAddress) => {
+//     const response = await fetch(`${API_URL}/api/blockchain/mine?minerAddress=${minerAddress}`, {
+//       method: 'POST',
+//     });
+//     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+//     return response.text();
+//   },
+
+//   getBalance: async (address) => {
+//     const response = await fetch(`${API_URL}/api/blockchain/balance/${address}`);
+//     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+//     return response.json();
+//   },
+
+//   setBalance: async (address, amount) => {
+//     const response = await fetch(`${API_URL}/api/blockchain/setbalance?address=${address}&amount=${amount}`, {
+//       method: 'POST',
+//     });
+//     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+//     return response.text();
+//   },
+
+//   validateChain: async () => {
+//     const response = await fetch(`${API_URL}/api/blockchain/validate`);
+//     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+//     return response.json();
+//   }
+// };
+
+
+
 const API_URL = window.location.origin; // same host as frontend
 
 export const BlockchainService = {
+  // Fetch the entire blockchain
   getBlockchain: async () => {
     const response = await fetch(`${API_URL}/api/blockchain/chain`);
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     return response.json();
   },
 
+  // Create a new transaction
   createTransaction: async (tx) => {
     const response = await fetch(`${API_URL}/api/blockchain/transaction`, {
       method: 'POST',
@@ -110,32 +162,38 @@ export const BlockchainService = {
     return response.text();
   },
 
+  // Mine a new block
   mineBlock: async (minerAddress) => {
-    const response = await fetch(`${API_URL}/api/blockchain/mine?minerAddress=${minerAddress}`, {
+    const response = await fetch(`${API_URL}/api/blockchain/mine?minerAddress=${encodeURIComponent(minerAddress)}`, {
       method: 'POST',
     });
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     return response.text();
   },
 
+  // Get balance of an address
   getBalance: async (address) => {
-    const response = await fetch(`${API_URL}/api/blockchain/balance/${address}`);
+    const encodedAddress = encodeURIComponent(address);
+    const response = await fetch(`${API_URL}/api/blockchain/balance/${encodedAddress}`);
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     return response.json();
   },
 
+  // Set balance of an address
   setBalance: async (address, amount) => {
-    const response = await fetch(`${API_URL}/api/blockchain/setbalance?address=${address}&amount=${amount}`, {
+    const encodedAddress = encodeURIComponent(address);
+    const numericAmount = Number(amount); // ensure amount is a number
+    const response = await fetch(`${API_URL}/api/blockchain/setbalance?address=${encodedAddress}&amount=${numericAmount}`, {
       method: 'POST',
     });
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     return response.text();
   },
 
+  // Validate the blockchain
   validateChain: async () => {
     const response = await fetch(`${API_URL}/api/blockchain/validate`);
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     return response.json();
   }
 };
-
