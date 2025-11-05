@@ -48,44 +48,93 @@
 
 // BlockchainService.js
 // const API_URL = 'http://localhost:5000/api/blockchain'; // Change if backend runs on a different port
-const API_URL = window.location.origin; // uses the same host as the frontend
+// const API_URL = window.location.origin; // uses the same host as the frontend
+
+// export const BlockchainService = {
+//   getBlockchain: async () => {
+//     const response = await fetch(`${API_URL}/chain`);
+//     return response.json();
+//   },
+
+//   createTransaction: async (tx) => {
+//     const response = await fetch(`${API_URL}/transaction`, {
+//       method: 'POST',
+//       headers: { 'Content-Type': 'application/json' },
+//       body: JSON.stringify(tx),
+//     });
+//     return response.text();
+//   },
+
+//   mineBlock: async (minerAddress) => {
+//     const response = await fetch(`${API_URL}/mine?minerAddress=${minerAddress}`, {
+//       method: 'POST',
+//     });
+//     return response.text();
+//   },
+
+//   getBalance: async (address) => {
+//     const response = await fetch(`${API_URL}/balance/${address}`);
+//     return response.json();
+//   },
+
+//   setBalance: async (address, amount) => {
+//     const response = await fetch(`${API_URL}/setbalance?address=${address}&amount=${amount}`, {
+//       method: 'POST',
+//     });
+//     return response.text();
+//   },
+
+//   validateChain: async () => {
+//     const response = await fetch(`${API_URL}/validate`);
+//     return response.json();
+//   }
+// };
+
+
+const API_URL = window.location.origin; // same host as frontend
 
 export const BlockchainService = {
   getBlockchain: async () => {
-    const response = await fetch(`${API_URL}/chain`);
+    const response = await fetch(`${API_URL}/api/blockchain/chain`);
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     return response.json();
   },
 
   createTransaction: async (tx) => {
-    const response = await fetch(`${API_URL}/transaction`, {
+    const response = await fetch(`${API_URL}/api/blockchain/transaction`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(tx),
     });
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     return response.text();
   },
 
   mineBlock: async (minerAddress) => {
-    const response = await fetch(`${API_URL}/mine?minerAddress=${minerAddress}`, {
+    const response = await fetch(`${API_URL}/api/blockchain/mine?minerAddress=${minerAddress}`, {
       method: 'POST',
     });
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     return response.text();
   },
 
   getBalance: async (address) => {
-    const response = await fetch(`${API_URL}/balance/${address}`);
+    const response = await fetch(`${API_URL}/api/blockchain/balance/${address}`);
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     return response.json();
   },
 
   setBalance: async (address, amount) => {
-    const response = await fetch(`${API_URL}/setbalance?address=${address}&amount=${amount}`, {
+    const response = await fetch(`${API_URL}/api/blockchain/setbalance?address=${address}&amount=${amount}`, {
       method: 'POST',
     });
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     return response.text();
   },
 
   validateChain: async () => {
-    const response = await fetch(`${API_URL}/validate`);
+    const response = await fetch(`${API_URL}/api/blockchain/validate`);
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     return response.json();
   }
 };
