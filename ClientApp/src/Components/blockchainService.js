@@ -47,7 +47,8 @@
 // };
 
 // BlockchainService.js
-const API_URL = 'http://localhost:5000/api/blockchain'; // Change if backend runs on a different port
+// const API_URL = 'http://localhost:5000/api/blockchain'; // Change if backend runs on a different port
+const API_URL = window.location.origin; // uses the same host as the frontend
 
 export const BlockchainService = {
   getBlockchain: async () => {
