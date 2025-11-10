@@ -141,10 +141,14 @@
 
 
 
-const API_URL = window.location.origin; // same host as frontend
+const API_URL = window.location.origin;
+ // same host as frontend
+
+ console.log("API_URL :", API_URL)
 
 export const BlockchainService = {
   // Fetch the entire blockchain
+  
   getBlockchain: async () => {
     const response = await fetch(`${API_URL}/api/blockchain/chain`);
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
