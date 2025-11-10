@@ -180,7 +180,7 @@
 
 // src/Components/Test.jsx
 import React, { useState } from 'react';
-import { BlockchainService } from './BlockchainService.js';
+import { BlockchainService } from './blockchainService.js';
 
 function Test() {
   const [blockchain, setBlockchain] = useState([]);

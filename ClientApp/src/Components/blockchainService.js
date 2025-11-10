@@ -141,7 +141,8 @@
 
 
 
-const API_URL = window.location.origin;
+const API_URL = import.meta.env.VITE_API_URL || window.location.origin;
+
  // same host as frontend
 
  console.log("API_URL :", API_URL)
