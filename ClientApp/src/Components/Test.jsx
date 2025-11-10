@@ -183,43 +183,43 @@ import React, { useState, useEffect } from 'react';
 import { BlockchainService } from './blockchainService.js';
 
 function Test() {
-  useEffect(() => {
-  // Disable right-click
-  const disableContextMenu = (e) => e.preventDefault();
-  document.addEventListener("contextmenu", disableContextMenu);
+//   useEffect(() => {
+//   // Disable right-click
+//   const disableContextMenu = (e) => e.preventDefault();
+//   document.addEventListener("contextmenu", disableContextMenu);
 
-  // Disable common DevTools shortcuts
-  const disableShortcuts = (e) => {
-    if (
-      e.key === "F12" ||
-      (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase())) ||
-      (e.ctrlKey && e.key.toUpperCase() === "U")
-    ) {
-      e.preventDefault();
-    }
-  };
-  document.addEventListener("keydown", disableShortcuts);
+//   // Disable common DevTools shortcuts
+//   const disableShortcuts = (e) => {
+//     if (
+//       e.key === "F12" ||
+//       (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase())) ||
+//       (e.ctrlKey && e.key.toUpperCase() === "U")
+//     ) {
+//       e.preventDefault();
+//     }
+//   };
+//   document.addEventListener("keydown", disableShortcuts);
 
-  // Detect if DevTools is open
-  const threshold = 160;
-  const checkDevTools = () => {
-    const widthDiff = window.outerWidth - window.innerWidth > threshold;
-    const heightDiff = window.outerHeight - window.innerHeight > threshold;
-    if (widthDiff || heightDiff) {
-      alert("Developer tools are not allowed!");
-      window.location.reload();
-    }
-  };
+//   // Detect if DevTools is open
+//   const threshold = 160;
+//   const checkDevTools = () => {
+//     const widthDiff = window.outerWidth - window.innerWidth > threshold;
+//     const heightDiff = window.outerHeight - window.innerHeight > threshold;
+//     if (widthDiff || heightDiff) {
+//       alert("Developer tools are not allowed!");
+//       window.location.reload();
+//     }
+//   };
 
-  const interval = setInterval(checkDevTools, 1000);
+//   const interval = setInterval(checkDevTools, 1000);
 
-  // Cleanup on unmount
-  return () => {
-    document.removeEventListener("contextmenu", disableContextMenu);
-    document.removeEventListener("keydown", disableShortcuts);
-    clearInterval(interval);
-  };
-}, []);
+//   // Cleanup on unmount
+//   return () => {
+//     document.removeEventListener("contextmenu", disableContextMenu);
+//     document.removeEventListener("keydown", disableShortcuts);
+//     clearInterval(interval);
+//   };
+// }, []);
 
   const [blockchain, setBlockchain] = useState([]);
   const [transaction, setTransaction] = useState({ from: '', to: '', amount: '' });
