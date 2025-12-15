@@ -1,0 +1,4 @@
+heroku git:remote -a sumulation
+heroku logs --tail -a sumulation
+heroku buildpacks:add heroku/dotnet -a sumulation
+heroku apps
