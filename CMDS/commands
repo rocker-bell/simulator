@@ -2,3 +2,8 @@ heroku git:remote -a sumulation
 heroku logs --tail -a sumulation
 heroku buildpacks:add heroku/dotnet -a sumulation
 heroku apps
+heroku domains -a sumulation
+heroku certs:auto:enable -a sumulation
+heroku certs:auto
+nslookup www.testdev.studio
+nslookup testdev.studio
