@@ -9,7 +9,7 @@ But let’s get specific so you understand exactly how it works.
 RPC (Remote Procedure Call) URLs are how wallets like MetaMask or blockchain clients talk to networks like Ethereum. They POST JSON payloads to a single URL like:
 
 ```
-https://mainnet.infura.io/v3/your-api-key || ead844b21fbf40bda9ecbaa4725f6931
+https://mainnet.infura.io/v3/your-api-key ||
 ```
 
 And send requests like:
